@@ -98,6 +98,11 @@ const FOOTER_INJECT = getEnv(import.meta.env, Astro, 'FOOTER_INJECT')
                   title=Devin - AI Programming Assistant | Learn Coding with Expert AI
                   class={`nav-link current`}>Ai Devin</a
                 >
+              </div>
+           <div id="aside-container">
+          <slot name="aside">
+            <div class="nav">
+              <div class="nav-item">
                 <a
                   href="https://posts.aidevin.dev/zero-gpu-spaces"
                   title=Zero-Gpu-Spaces form Huggingface
