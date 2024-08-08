@@ -68,6 +68,15 @@ const FOOTER_INJECT = getEnv(import.meta.env, Astro, 'FOOTER_INJECT')
       {...seoParams}
     />
     <Fragment set:html={HEADER_INJECT} />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PFY56VPR6Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PFY56VPR6Z');
+</script>
   </head>
   <body>
     <div id="wrapper">
