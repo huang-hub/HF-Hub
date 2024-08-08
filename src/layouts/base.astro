@@ -84,7 +84,12 @@ const FOOTER_INJECT = getEnv(import.meta.env, Astro, 'FOOTER_INJECT')
                   title={channel?.title}
                   class={`nav-link current`}>Home</a
                 >
-                <a href="https://www.aidevin.dev" target="_blank">Ai Devin</a>
+                <a
+                  href="https://www.aidevin.dev"
+                  title={channel?.title}
+                  class={`nav-link current`}>Ai Devin</a
+                >
+              
               </div>
             </div>
             <input
