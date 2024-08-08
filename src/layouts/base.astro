@@ -109,7 +109,16 @@ const FOOTER_INJECT = getEnv(import.meta.env, Astro, 'FOOTER_INJECT')
                   class={`nav-link current`}>Zero-Gpu-Spaces</a
                 >
               </div>
-          
+          <div id="aside-container">
+          <slot name="aside">
+            <div class="nav">
+              <div class="nav-item">
+                <a
+                  href="https://posts.aidevin.dev/flux.1-dev"
+                  title=flux.1-dev form Huggingface
+                  class={`nav-link current`}>FLUX.1-dev</a
+                >
+              </div>
             </div>
             <input
               class="search-icon"
