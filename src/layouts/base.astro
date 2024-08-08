@@ -109,6 +109,13 @@ const FOOTER_INJECT = getEnv(import.meta.env, Astro, 'FOOTER_INJECT')
             />
             <form class="search-form" action="/search/result" method="get">
               <input type="text" name="q" placeholder="Search" />
+
+            <div class="flex flex-wrap justify-center gap-4 p-4 pb-6 max-w-full md:max-w-[22rem]">
+              <a class="inline-block text-nowrap py-1 px-2 text-base leading-6 border border-gray-300 text-gray-500 hover:text-[#f66619] hover:border-gray-200 hover:shadow-md font-semibold rounded-lg" target="_blank" href="https://posts.aidevin.dev/search/%23huggingface">huggingface</a>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4 p-4 pb-6 max-w-full md:max-w-[22rem]">
+              <a class="inline-block text-nowrap py-1 px-2 text-base leading-6 border border-gray-300 text-gray-500 hover:text-[#f66619] hover:border-gray-200 hover:shadow-md font-semibold rounded-lg" target="_blank" href="https://posts.aidevin.dev/search/%23FLUX">FLUX</a>
+            </div>
             </form>
             <div class="copyright-wrap">
               Powered by
