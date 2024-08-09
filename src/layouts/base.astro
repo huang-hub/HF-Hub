@@ -71,74 +71,50 @@ const FOOTER_INJECT = getEnv(import.meta.env, Astro, 'FOOTER_INJECT')
     />
     <Fragment set:html={HEADER_INJECT} />
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PFY56VPR6Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PFY56VPR6Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-PFY56VPR6Z');
-</script>
-<script defer data-domain="posts.aidevin.dev" src="https://app.pageview.app/js/script.js"></script>
+      gtag('config', 'G-PFY56VPR6Z');
+    </script>
+    <script defer data-domain="posts.aidevin.dev" src="https://app.pageview.app/js/script.js"></script>
   </head>
   <body>
-    <div id="wrapper">
-      <div id="container">
-        <div id="main-container">
+    <div id="wrapper" class="flex flex-col min-h-screen">
+      <div id="container" class="flex-grow">
+        <div id="main-container" class="p-4">
           <slot />
         </div>
-        <div id="aside-container">
+        <div id="aside-container" class="p-4">
           <slot name="aside">
             <div class="nav">
               <div class="nav-item">
                 <a
                   href={SITE_URL}
                   title={channel?.title}
-                  class={`nav-link current`}>Home</a
-                >
+                  class="nav-link current">Home</a>
                 <a
                   href="https://www.aidevin.dev"
-                  title=Devin - AI Programming Assistant | Learn Coding with Expert AI
-                  class={`nav-link current`}>Ai Devin</a
-                >
-              </div>
-           <div id="aside-container">
-          <slot name="aside">
-            <div class="nav">
-              <div class="nav-item">
+                  title="Devin - AI Programming Assistant | Learn Coding with Expert AI"
+                  class="nav-link current">Ai Devin</a>
                 <a
                   href="https://posts.aidevin.dev/zero-gpu-spaces"
-                  title=Zero-Gpu-Spaces form Huggingface
-                  class={`nav-link current`}>Zero-Gpu-Spaces</a
-                >
-              </div>
-          <div id="aside-container">
-          <slot name="aside">
-            <div class="nav">
-              <div class="nav-item">
+                  title="Zero-Gpu-Spaces form Huggingface"
+                  class="nav-link current">Zero-Gpu-Spaces</a>
                 <a
                   href="https://posts.aidevin.dev/flux-1-dev"
-                  title=flux.1-dev form Huggingface
-                  class={`nav-link current`}>FREE FLUX.1-dev</a
-                >
-              </div>
-            <slot name="aside">
-            <div class="nav">
-              <div class="nav-item">
+                  title="flux.1-dev form Huggingface"
+                  class="nav-link current">FREE FLUX.1-dev</a>
                 <a
                   href="https://posts.aidevin.dev/flux-1-schnell"
-                  title=flux.1-schnell form Huggingface
-                  class={`nav-link current`}>FREE FLUX.1-schnell</a
-                >
-              </div>
-              <slot name="aside">
-            <div class="nav">
-              <div class="nav-item">
+                  title="flux.1-schnell form Huggingface"
+                  class="nav-link current">FREE FLUX.1-schnell</a>
                 <a
                   href="https://posts.aidevin.dev/stable-fast-3d/"
-                  title=SF3D: Stable Fast 3D form Huggingface
-                  class={`nav-link current`}>SF3D: Stable Fast 3D</a
-                >
+                  title="SF3D: Stable Fast 3D form Huggingface"
+                  class="nav-link current">SF3D: Stable Fast 3D</a>
               </div>
             </div>
             <input
@@ -149,42 +125,35 @@ const FOOTER_INJECT = getEnv(import.meta.env, Astro, 'FOOTER_INJECT')
             />
             <form class="search-form" action="/search/result" method="get">
               <input type="text" name="q" placeholder="Search" />
-
-
             </form>
             <div class="flex flex-wrap justify-center gap-4 p-4 pb-6 max-w-full md:max-w-[22rem]">
               <a class="inline-block text-nowrap py-1 px-2 text-base leading-6 border border-gray-300 text-gray-500 hover:text-[#f66619] hover:border-gray-200 hover:shadow-md font-semibold rounded-lg" target="_blank" href="https://posts.aidevin.dev/search/%23huggingface">huggingface</a>
-            </div>
-            <div class="flex flex-wrap justify-center gap-4 p-4 pb-6 max-w-full md:max-w-[22rem]">
               <a class="inline-block text-nowrap py-1 px-2 text-base leading-6 border border-gray-300 text-gray-500 hover:text-[#f66619] hover:border-gray-200 hover:shadow-md font-semibold rounded-lg" target="_blank" href="https://posts.aidevin.dev/search/%23FLUX">FLUX</a>
             </div>
-            <div class="copyright-wrap">
+            <div class="copyright-wrap text-center">
               Powered by
               <a
                 href="https://github.com/ccbikai/BroadcastChannel"
                 title="BroadcastChannel"
                 target="_blank"
-                rel="noopener"
-              >
+                rel="noopener">
                 BroadcastChannel
               </a> &
               <a
                 href="https://github.com/Planetable/SiteTemplateSepia"
                 title="Sepia"
                 target="_blank"
-                rel="noopener"
-              >
+                rel="noopener">
                 Sepia
               </a>
               <div class="flex flex-wrap justify-center gap-4 p-4 pb-6 max-w-full md:max-w-[22rem]">
-              <a class="inline-block text-nowrap py-1 px-2 text-base leading-6 border border-gray-300 text-gray-500 hover:text-[#f66619] hover:border-gray-200 hover:shadow-md font-semibold rounded-lg" target="_blank" href="https://serpchecker.girff.com/">Serp Checker</a>
-            </div>
+                <a class="inline-block text-nowrap py-1 px-2 text-base leading-6 border border-gray-300 text-gray-500 hover:text-[#f66619] hover:border-gray-200 hover:shadow-md font-semibold rounded-lg" target="_blank" href="https://serpchecker.girff.com/">Serp Checker</a>
+              </div>
             </div>
           </slot>
         </div>
       </div>
+      <Fragment set:html={FOOTER_INJECT} />
     </div>
-
-    <Fragment set:html={FOOTER_INJECT} />
   </body>
 </html>
