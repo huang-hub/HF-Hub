@@ -83,40 +83,36 @@ const FOOTER_INJECT = getEnv(import.meta.env, Astro, 'FOOTER_INJECT')
   </head>
   <body>
     <div id="wrapper" class="flex flex-col min-h-screen">
-      <div id="container" class="flex-grow">
-        <div id="main-container" class="p-4">
+      <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+          <a href={SITE_URL} class="text-white text-lg font-bold">Home</a>
+          <div class="hidden md:flex space-x-4">
+            <a href="https://www.aidevin.dev" class="text-white">Ai Devin</a>
+            <a href="https://posts.aidevin.dev/zero-gpu-spaces" class="text-white">Zero-Gpu-Spaces</a>
+            <a href="https://posts.aidevin.dev/flux-1-dev" class="text-white">FREE FLUX.1-dev</a>
+            <a href="https://posts.aidevin.dev/flux-1-schnell" class="text-white">FREE FLUX.1-schnell</a>
+            <a href="https://posts.aidevin.dev/stable-fast-3d/" class="text-white">SF3D: Stable Fast 3D</a>
+          </div>
+          <button class="md:hidden text-white focus:outline-none" id="menu-toggle">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="md:hidden" id="mobile-menu">
+          <a href="https://www.aidevin.dev" class="block text-white py-2">Ai Devin</a>
+          <a href="https://posts.aidevin.dev/zero-gpu-spaces" class="block text-white py-2">Zero-Gpu-Spaces</a>
+          <a href="https://posts.aidevin.dev/flux-1-dev" class="block text-white py-2">FREE FLUX.1-dev</a>
+          <a href="https://posts.aidevin.dev/flux-1-schnell" class="block text-white py-2">FREE FLUX.1-schnell</a>
+          <a href="https://posts.aidevin.dev/stable-fast-3d/" class="block text-white py-2">SF3D: Stable Fast 3D</a>
+        </div>
+      </nav>
+      <div id="container" class="flex-grow p-4">
+        <div id="main-container">
           <slot />
         </div>
-        <div id="aside-container" class="p-4">
+        <div id="aside-container">
           <slot name="aside">
-            <div class="nav">
-              <div class="nav-item">
-                <a
-                  href={SITE_URL}
-                  title={channel?.title}
-                  class="nav-link current">Home</a>
-                <a
-                  href="https://www.aidevin.dev"
-                  title="Devin - AI Programming Assistant | Learn Coding with Expert AI"
-                  class="nav-link current">Ai Devin</a>
-                <a
-                  href="https://posts.aidevin.dev/zero-gpu-spaces"
-                  title="Zero-Gpu-Spaces form Huggingface"
-                  class="nav-link current">Zero-Gpu-Spaces</a>
-                <a
-                  href="https://posts.aidevin.dev/flux-1-dev"
-                  title="flux.1-dev form Huggingface"
-                  class="nav-link current">FREE FLUX.1-dev</a>
-                <a
-                  href="https://posts.aidevin.dev/flux-1-schnell"
-                  title="flux.1-schnell form Huggingface"
-                  class="nav-link current">FREE FLUX.1-schnell</a>
-                <a
-                  href="https://posts.aidevin.dev/stable-fast-3d/"
-                  title="SF3D: Stable Fast 3D form Huggingface"
-                  class="nav-link current">SF3D: Stable Fast 3D</a>
-              </div>
-            </div>
             <input
               class="search-icon"
               name="icon"
@@ -155,5 +151,10 @@ const FOOTER_INJECT = getEnv(import.meta.env, Astro, 'FOOTER_INJECT')
       </div>
       <Fragment set:html={FOOTER_INJECT} />
     </div>
+    <script>
+      document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+      });
+    </script>
   </body>
 </html>
