@@ -5,39 +5,86 @@ import List from '../../components/list.astro'
 import { getChannelInfo } from '../../lib/telegram'
 
 const { SITE_URL } = Astro.locals
-
 const channelInfo = await getChannelInfo(Astro)
-
 const post = await getChannelInfo(Astro, {
   type: 'post',
   id: Astro.params.id,
 })
 
+// 获取帖子标题（前60个字符）
+function getPostTitle(post) {
+  if (post && post.text) {
+    return post.text.slice(0, 60).trim() + (post.text.length > 60 ? '...' : '');
+  }
+  return 'Untitled Post';
+}
+
+// 获取帖子短描述（前160个字符）
+function getPostDescription(post) {
+  if (post && post.text) {
+    return post.text.slice(0, 160).trim() + (post.text.length > 160 ? '...' : '');
+  }
+  return 'No description available.';
+}
+
+const postTitle = getPostTitle(post);
+const postDescription = getPostDescription(post);
+
 const channel = {
   ...(channelInfo || {}),
   posts: [post],
-  seo: post,
+  seo: {
+    ...post,
+    title: postTitle,
+    description: postDescription,
+  },
+  title: postTitle,
 }
 
 const staticProxy = getEnv(import.meta.env, Astro, 'STATIC_PROXY') ?? '/static/'
-
 export const prerender = false
 ---
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{postTitle}</title>
+  <meta name="description" content={postDescription}>
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content={`${SITE_URL}/${Astro.params.id}`}>
+  <meta property="og:title" content={postTitle}>
+  <meta property="og:description" content={postDescription}>
+  <meta property="og:image" content={channel?.avatar?.startsWith('http') ? staticProxy + channel?.avatar : voidFile.src}>
 
-<List channel={channel} before={false} after={false}>
-  <div slot="header" id="breadcrumb">
-    <img
-      src={channel?.avatar?.startsWith('http')
-        ? staticProxy + channel?.avatar
-        : voidFile.src}
-      alt={channel?.title}
-      loading="eager"
-      class="breadcrumb-avatar"
-    />
-    <div class="breadcrumb-title">
-      <a href={SITE_URL} class="site-title" title={channel?.title}>
-        {channel.title}
-      </a>
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content={`${SITE_URL}/${Astro.params.id}`}>
+  <meta property="twitter:title" content={postTitle}>
+  <meta property="twitter:description" content={postDescription}>
+  <meta property="twitter:image" content={channel?.avatar?.startsWith('http') ? staticProxy + channel?.avatar : voidFile.src}>
+</head>
+<body>
+  <List channel={channel} before={false} after={false}>
+    <div slot="header" id="breadcrumb">
+      <img
+        src={channel?.avatar?.startsWith('http')
+          ? staticProxy + channel?.avatar
+          : voidFile.src}
+        alt={postTitle}
+        loading="eager"
+        class="breadcrumb-avatar"
+      />
+      <div class="breadcrumb-title">
+        <a href={SITE_URL} class="site-title" title={postTitle}>
+          {postTitle}
+        </a>
+      </div>
     </div>
-  </div>
-</List>
+    <div slot="description">
+      <p>{postDescription}</p>
+    </div>
+  </List>
+</body>
+</html>
