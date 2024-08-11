@@ -11,18 +11,18 @@ const post = await getChannelInfo(Astro, {
   id: Astro.params.id,
 })
 
-// 获取帖子标题（前60个字符）
+// 获取帖子标题（前57个字符）
 function getPostTitle(post) {
   if (post && post.text) {
-    return post.text.slice(0, 60).trim() + (post.text.length > 60 ? '...' : '');
+    return post.text.slice(0, 57).trim() + (post.text.length > 57 ? '...' : '');
   }
   return 'Untitled Post';
 }
 
-// 获取帖子短描述（前160个字符）
+// 获取帖子短描述（前57个字符）
 function getPostDescription(post) {
   if (post && post.text) {
-    return post.text.slice(0, 160).trim() + (post.text.length > 160 ? '...' : '');
+    return post.text.slice(0, 157).trim() + (post.text.length > 157 ? '...' : '');
   }
   return 'No description available.';
 }
