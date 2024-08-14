@@ -6,7 +6,21 @@ const channel = await getChannelInfo(Astro, {
   after: Astro.params.cursor,
 })
 
+// 动态生成 title 和 description
+const pageTitle = channel?.title || 'Default Title'
+const pageDescription = channel?.description || 'Default Description'
+
 export const prerender = false
 ---
 
-<List channel={channel} />
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDescription}>
+</head>
+<body>
+  <List channel={channel} />
+</body>
+</html>
