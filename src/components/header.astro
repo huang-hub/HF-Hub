@@ -118,18 +118,7 @@ const staticProxy = getEnv(import.meta.env, Astro, 'STATIC_PROXY') ?? '/static/'
     <div class="text-box" id="site-intro" set:html={channel?.description} />
   )
 }
-</div>
-            <input
-              class="search-icon"
-              name="icon"
-              type="checkbox"
-              placeholder="Search"
-            />
-            <form class="search-form" action="/search/result" method="get">
-              <input type="text" name="q" placeholder="Search" />
-      <div class="more-info">
-        <a href={SITE_URL} class="more-link">View More Posts</a>
-      </div>
+
 <style>
   #site-intro {
     color: var(--secondary-color);
