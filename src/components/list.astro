@@ -46,4 +46,11 @@ const afterCursor = posts[0]?.id
       )
     }
   </div>
+      <div class="search-container">
+        <input type="text" placeholder="Search..." class="search-input" />
+        <button class="search-button">Search</button>
+      </div>
+      <div class="more-info">
+        <a href={`${SITE_URL}/${Astro.params.id}/more`} class="more-link">View More Posts</a>
+      </div>
 </Layout>
